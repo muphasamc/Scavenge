@@ -1,0 +1,5 @@
+{
+  "name": "Scavenge",
+  "description": "A physics-based procedural animation of a multi-legged creature traversing uneven terrain using inverse kinematics.",
+  "requestFramePermissions": []
+}
