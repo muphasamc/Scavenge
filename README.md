@@ -1,4 +1,4 @@
-# Procedural Spider Walker
+# Procedural Spider Walker - [demo](https://muphasamc.github.io/Scavenge/)
 
 A physics-based procedural animation experiment featuring a multi-legged creature traversing uneven, procedurally generated terrain using Inverse Kinematics (IK).
 
