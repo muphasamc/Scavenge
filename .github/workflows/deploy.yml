@@ -36,6 +36,9 @@ jobs:
       - name: Instalar dependencias
         run: npm ci --legacy-peer-deps
 
+      - name: Limpiar builds anteriores
+        run: rm -rf dist || true
+
       - name: Construir proyecto (Build)
         run: npm run build
 
@@ -45,7 +48,24 @@ jobs:
             echo "Error: El directorio dist está vacío o no existe"
             exit 1
           fi
-          echo "Build completado exitosamente"
+          
+          # Verificar que el HTML no tenga el CDN de Tailwind
+          if grep -q "cdn.tailwindcss.com" dist/index.html; then
+            echo "Error: El HTML generado todavía contiene el CDN de Tailwind"
+            echo "Contenido del index.html:"
+            cat dist/index.html
+            exit 1
+          fi
+          
+          # Verificar que el HTML tenga las referencias a los assets correctamente
+          if ! grep -q "assets" dist/index.html; then
+            echo "Warning: No se encontraron referencias a assets en el HTML"
+            echo "Contenido del index.html:"
+            cat dist/index.html
+          fi
+          
+          echo "✓ Build completado exitosamente"
+          echo "✓ HTML verificado sin CDN de Tailwind"
 
       - name: Subir artefacto para despliegue
         uses: actions/upload-pages-artifact@v3
