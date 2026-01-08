@@ -25,6 +25,39 @@ A physics-based procedural animation experiment featuring a multi-legged creatur
 - **TypeScript**: Type safety for complex physics math.
 - **Tailwind CSS**: HUD and UI styling.
 
+## Deployment Automático en GitHub Pages
+
+Este proyecto está configurado para desplegarse automáticamente en GitHub Pages cada vez que se hace push a la rama `main` o `master`.
+
+### Configuración inicial (solo una vez)
+
+1. **Habilitar GitHub Pages en tu repositorio:**
+   - Ve a Settings > Pages
+   - En "Source", selecciona "GitHub Actions"
+   - Guarda los cambios
+
+2. **Hacer push del workflow:**
+   ```bash
+   git add .github/workflows/deploy.yml
+   git commit -m "Configurar deploy automático a GitHub Pages"
+   git push
+   ```
+
+3. **¡Listo!** El workflow se ejecutará automáticamente y tu sitio estará disponible en:
+   - Si tu repositorio es `usuario.github.io`: `https://usuario.github.io`
+   - Si tu repositorio tiene nombre: `https://usuario.github.io/nombre-del-repo`
+
+### Cómo funciona
+
+- Cada vez que haces push a `main` o `master`, el workflow automáticamente:
+  1. Instala las dependencias
+  2. Construye el proyecto
+  3. Despliega a GitHub Pages
+
+- También puedes activar el deploy manualmente desde la pestaña "Actions" en GitHub.
+
+- No necesitas mantener nada manualmente, todo es automático.
+
 ## Version
 
 v1.0.0
